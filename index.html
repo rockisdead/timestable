@@ -410,9 +410,9 @@
   function renderTables() {
     tablesBox.querySelectorAll(".chip").forEach((btn, i) => btn.setAttribute("aria-pressed", String(selected.has(MIN + i))));
     const picked = [...selected].sort((x, y) => x - y);
-    $("tablesHint").textContent = picked.length
+    $("tablesHint").innerHTML = picked.length
       ? `Çalışılan tablo: ${picked.join(", ")}`
-      : `Hiçbiri seçili değil: ${MIN} ile ${MAX} arası hepsi gelecek`;
+      : `<span style="color:red; font-weight:bold;">Hiçbiri seçili değil: ${MIN} ile ${MAX} arası hepsi gelecek</span>`;
     $("clearTables").classList.toggle("hidden", !picked.length);
   }
   $("clearTables").addEventListener("click", () => { selected.clear(); renderTables(); });
